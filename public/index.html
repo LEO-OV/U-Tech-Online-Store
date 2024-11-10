@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>U Tech</title>
+    <link rel="icon" href="/public/icons/logo-blanco-s.png" type="image/x-icon">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <link rel="stylesheet" href="/src/styles/styles.css">
+    <link rel="stylesheet" href="/src/styles/styles-index.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200..1000;1,200..1000&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- MENU -->
+    <nav class="navbar relative-top navbar-dark navbar-expand-lg px-3">
+        <div class="container-fluid">
+           
+                <!-- BOTÓN DE MENÚ LATERAL -->
+                <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#menu" >
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <!-- MENU LOGO -->
+                <a class="navbar-brand" href="/public/index.html">
+                    <img src="/public/icons/logo-sf.png" alt="U Tech">
+                </a>
+            
+
+            <!-- OFFCANVAS CONTENEDOR PRINCIPAL -->
+            <section class="offcanvas offcanvas-start text-bg-dark" id="menu" tabindex="-1 ">
+                <!-- OFFCANVAS HEADER -->
+                <div class="offcanvas-header justify-content-evenly pe-5" >
+                    <img src="/public/icons/nombre-oscuro.png" alt="U Tech" class="img-fluid" >
+                    <button class="btn-close btn-close-white ms-2" type="button" aria-label="Close" data-bs-dismiss="offcanvas"></button>
+                </div>
+                <div class="offcanvas-body d-flex flex-column justify-content-between" data-bs-theme="dark">
+                    <!-- ENLACES A SECCIONES DE LA PÁGINA -->
+                    <ul class="navbar-nav fs-5 justify-content-start ">
+                        <li class="nav-item dropdown p-3 py-md-3">
+                            <a href="#" class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown">PRODUCTS</a>
+                            <!-- MENU DESPLEGABLE -->
+                            <ul class="dropdown-menu">
+                                <li><a href="" class="dropdown-item fs-5"><i class="bi bi-phone"></i>&emsp;Phones</a></li>
+                                <li><a href="" class="dropdown-item fs-5"><i class="bi bi-tablet"></i>&emsp;Laptops</a></li>
+                                <li><a href="" class="dropdown-item fs-5"><i class="bi bi-laptop"></i>&emsp;Tablets</a></li>
+                                <li><a href="" class="dropdown-item fs-5"><i class="bi bi-headphones"></i>&emsp;Headphones</a></li>
+                            </ul>
+                        </li>
+                        <li class="nav-item p-3 py-md-3 "><a href="" class="nav-link">MENU 2</a></li>
+                        <li class="nav-item p-3 py-md-3 "><a href="" class="nav-link">MENU 3</a></li>
+                        <li class="nav-item p-3 py-md-3 "><a href="" class="nav-link">MENU 4</a></li>
+                    </ul>
+                    <!-- ICONOS DE REDES SOCIALES -->
+                     <div class="d-lg-none align-self-center ">
+                        <a href="" class="icon-link"><i class="bi bi-twitter-x p-4 fs-1" style="color: white"></i></a>
+                        <a href="" class="icon-link "><i class="bi bi-facebook p-4 fs-1" style="color: white"></i></a>
+                        <a href="https://github.com/LEO-OV" class="icon-link"><i class="bi bi-github p-4 fs-1" style="color: white"></i></a>
+                     </div>
+                </div>
+            </section>
+
+            <!-- ICONOS SESIÓN Y CARRITO  -->
+            <ul class="nav justify-content-end align-items-center">
+                <li class="nav-item"><a href="" class="nav-link"><i class="bi bi-cart fs-1"></i></a></li>
+                <li class="nav-item"><a href="" class="nav-link"><i class="bi bi-person-circle fs-1"></i></a></li>
+            </ul>
+        </div>
+    </nav>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+
+<!-- CONTENIDO DEL INDEX -->
+    <!-- CARRUSEL -->
+    <section class="carousel-index mb-5 text-center">
+        <div class="carousel slide" id="carousel-index" data-bs-ride="carousel">
+            <div class="carousel-indicators">
+                <button type="button" data-bs-target="#carousel-index" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+                <button type="button" data-bs-target="#carousel-index" data-bs-slide-to="1" aria-label="Slide 2"></button>
+                <button type="button" data-bs-target="#carousel-index" data-bs-slide-to="2" aria-label="Slide 3"></button>
+                <button type="button" data-bs-target="#carousel-index" data-bs-slide-to="3" aria-label="Slide 4"></button>
+              </div>
+            <div class="carousel-inner">
+                <div class="carousel-item active" data-bs-interval="2000" style="background-image: url(/public/img/carrusel-1.png);">
+                </div>
+                <div class="carousel-item"  data-bs-interval="2000" style="background-image: url(/public/img/carrusel-2.png);">
+                </div>
+                <div class="carousel-item"  data-bs-interval="2000" style="background-image: url(/public/img/carrusel-3.png);">
+                </div>
+                <div class="carousel-item" data-bs-interval="2000" style="background-image: url(/public/img/carrusel-4.png);">
+                </div>
+            </div>
+            <div class="titulo">
+                <h1>U Te<i class="bi bi-moon-fill" style="color: #5b4cff"></i>h</h1>
+                <br>
+                <h6><i class="bi bi-moon-fill"></i>onnecting U to the future.</h6>
+            </div>
+        </div>
+    </section>
+
+    <!-- CARACTERISTICAS DESTACADAS -->
+    <section class="container-fluid content-index my-5 text-center">
+        <div class="row my-5">
+            <h3 class="fw-bold">WHY U TECH?</h3>
+        </div>
+        <!-- CARACTERISTICA 1 -->
+        <div class="row char mb-5">
+            <div class="col-md-5 ver-align px-5 py-4 text-lg-start text-center">
+                <h4>AI that Learns from U</h4>
+                <p>Our AI technology adapts to your preferences and usage patterns, optimizing performance and anticipating your needs to make every interaction more efficient and personalized.</p>
+            </div>
+            <div class="col-md-7 ver-align">
+                <img src="/public/img/car1.png" alt="AI that learns from you." class="img-fluid">
+            </div>
+        </div>
+
+        <!-- CARACTERISTICA 2 Y 3 -->
+        <div class="row">
+            <div class="col-md char me-md-3  my-5 px-5 py-4">
+                <div class="row">
+                    <h4>Next Generation Security</h4>
+                    <p>Protecting your data is our priority. We implement advanced security systems, including facial recognition and AI-encrypted fingerprints for accuracy and speed.</p>
+                </div>
+                <div class="row">
+                    <img src="/public/img/car4.png" alt="Next generation security." class="img-fluid">
+                </div>
+            </div>
+            <div class="col-sm char ms-md-3  my-5 px-5 py-4">
+                <div class="row">
+                    <h4>Immersive Experience</h4>
+                    <p>Experience audiovisual excellence with our high-resolution displays and artificial intelligence-optimized surround sound systems for an unparalleled entertainment experience.</p>
+                </div>
+                <div class="row">
+                    <img src="/public/img/car5.png" alt="Immersive experience." class="img-fluid">
+                </div>
+            </div>
+        </div>
+        
+        <!-- CARACTERISTICA 4 -->
+        <div class="row char mb-5">
+            <div class="col-md-4 ver-align">
+                <img src="/public/img/car2.png" alt="Innovation at the highest level." class="img-fluid">
+            </div>
+            <div class="col-md-8 ver-align px-5 py-4">
+                <h4>Innovation at the Highest Level</h4>
+                <p>Our products are designed with state-of-the-art technology, integrating the latest innovations in artificial intelligence and advanced hardware to deliver a superior experience in every use.</p>
+            </div>
+        </div>
+
+        <!-- CARACTERISTICA 5 -->
+        <div class="row char mb-5"> 
+            <div class="col-md-7 ver-align">
+                <img src="/public/img/car3.png" alt="Unbeatable performance." class="img-fluid">
+            </div>
+            <div class="col-md-5 ver-align px-5 py-4 text-lg-end text-center">
+                <h4>Unbeatable Performance</h4>
+                <p>Equipped with high-end processors and an optimized architecture, our devices guarantee smooth performance even in the most demanding tasks, without interruptions or delays.</p>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- PREGUNTAS FRECUENTES -->
+    <section class="container-fluid content-index mb-5">
+        <div class="row">
+            <div class="col-lg-4">
+                <div class="container text-center p-3">
+                    <h4 class="fw-bold">Frequently Asked Questions</h4>
+                </div>
+            </div>
+            <div class="col-lg-8">
+                <div class="accordion accordion-flush" id="FAQ">
+                    <!-- PREGUNTA 1 -->
+                    <div class="accordion-item">
+                        <h2 class="accordion-header">
+                            <button class="accordion-button collapsed fs-4" type="button" data-bs-toggle="collapse" data-bs-target="#Q1" aria-expanded="false" aria-controls="Q1"> 
+                                What are the advantages of artificial intelligence in your products?
+                            </button>
+                        </h2>
+                        <div id="Q1" class="accordion-collapse collapse" data-bs-parent="#FAQ">
+                            <div class="accordion-body">
+                                <p class="fs-5">Our AI is designed to learn from your habits and optimize your experience, whether it's battery usage, task processing, or the security of your data. This means our devices become faster and more efficient over time, adapting to the way you work and play.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- PREGUNTA 2 -->
+                    <div class="accordion-item">
+                        <h2 class="accordion-header">
+                            <button class="accordion-button collapsed fs-4" type="button" data-bs-toggle="collapse" data-bs-target="#Q2" aria-expanded="false" aria-controls="Q1"> 
+                                What kind of technical support do you offer?
+                            </button>
+                        </h2>
+                        <div id="Q2" class="accordion-collapse collapse" data-bs-parent="#FAQ">
+                            <div class="accordion-body">
+                                <p class="fs-5">We offer 24/7 technical support through online chat, email and telephone assistance. In addition, we have a network of authorized service centers and a team of experts ready to help you with any problem you may have.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- PREGUNTA 3 -->
+                    <div class="accordion-item">
+                        <h2 class="accordion-header">
+                            <button class="accordion-button collapsed fs-4" type="button" data-bs-toggle="collapse" data-bs-target="#Q3" aria-expanded="false" aria-controls="Q1"> 
+                                Can I use the products with other devices of different brands?
+                            </button>
+                        </h2>
+                        <div id="Q3" class="accordion-collapse collapse" data-bs-parent="#FAQ">
+                            <div class="accordion-body">
+                                <p class="fs-5">Yes, our products are designed to be highly compatible with other brands' devices, although we recommend taking advantage of our integrated ecosystem to enjoy the best possible experience.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    
+<!-- FIN DEL INDEX -->
+    <!-- FOOTER -->
+    <footer>
+        <div class="footer px-5 py-2">
+            <!-- SECCIONES DEL FOOTER -->
+            <div class="row text-center text-md-start">
+                <div class="col-md-3 col-lg-3 co-xl-3  mx-auto pt-5">
+                    <h5 class="fs-5 mb-4">OUR PRODUCTS</h5>
+                    <hr class="mb-4">
+                    <p class="link-footer fs-5"><a href="" ><i class="bi bi-phone"></i>&emsp;Phones</a></p>
+                    <p class="link-footer fs-5"><a href="" ><i class="bi bi-tablet"></i>&emsp;Laptops</a></p>
+                    <p class="link-footer fs-5"><a href="" ><i class="bi bi-laptop"></i>&emsp;Tablets</a></p>
+                    <p class="link-footer fs-5"><a href="" ><i class="bi bi-headphones"></i>&emsp;Headphones</a></p>
+                </div>
+                <div class="col-md-3 col-lg-3 co-xl-3 mx-auto pt-5">
+                    <h5 class="fs-5 mb-4">SUPPORT</h5>
+                    <hr class="mb-4">
+                    <p class="link-footer fs-5"><a href="" >Contact</a></p>
+                    <p class="link-footer fs-5"><a href="" >Request a repair</a></p>
+                    <p class="link-footer fs-5"><a href="" >Manuals & Software</a></p>
+                </div>
+                <div class="col-md-3 col-lg-3 co-xl-3  mx-auto pt-5">
+                    <h6 class="mb-4 fs-5">LEGAL</h6>
+                    <hr class="mb-4">
+                    <p class="link-footer fs-5"><a href="" >Privacy</a></p>
+                    <p class="link-footer fs-5"><a href="" >Privacy Notice</a></p>
+                    <p class="link-footer fs-5"><a href="" >Terms and Conditions</a></p>
+                    <p class="link-footer fs-5"><a href="" >Cookies</a></p>
+                </div>
+            </div>
+        </div>
+        <div class="row text-center">
+            <hr class="mb-4">
+            <p class="fs-5" style="color: #ADB5BD;">Copyright <i class="bi bi-c-circle"></i> 2024 U-Tech. &emsp;All rights reserved</p>
+        </div>
+    </footer>
+</body>
+</html>
