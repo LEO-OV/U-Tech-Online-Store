@@ -1,3 +1,17 @@
+<?php 
+    if (session_status() === PHP_SESSION_NONE) {
+        session_start(); // Solo inicia la sesión si no está activa
+    }
+    if (isset($_SESSION['perm'])){
+        if($_SESSION['perm'] != 1){
+            $_SESSION['notadmin'] = 'Sorry... you can not access this page.';
+            header('location: /U-Tech/index.php');
+        }
+    } else{
+        $_SESSION['notadmin'] = 'You need to be logged in as an admin to access this page';
+        header('location: /U-Tech/index.php');
+    }
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -24,6 +38,10 @@
                   </button>
                   <div class="collapse navbar-collapse" id="navbarNavDropdown">
                     <ul class="navbar-nav">
+                        <!-- VOLVER A LA TIENDA -->
+                        <li class="nav-item px-3">
+                            <a class="nav-link " aria-current="page" href="<?php echo '/U-Tech/index.php'; ?>"><i class="bi bi-shop-window"></i>&emsp;U-Tech Store</a>
+                        </li>
                         <!-- PRODUCTOS -->
                         <li class="nav-item dropdown px-3">
                             <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
@@ -52,3 +70,29 @@
             </div>
         </section>
         <section class="content p-lg-5 py-5">
+        <?php 
+             //ALERTAS
+            if (isset($_SESSION['error'])) {
+                echo '<script>
+                        Swal.fire({
+                                icon: "error",
+                                title: "Oops...",
+                                text: "'. $_SESSION['error'] . '",
+                                });
+                        </script>';
+                unset($_SESSION['error']); 
+            } else if (isset($_SESSION['success'])){
+                echo '
+                    <script>
+                        Swal.fire({
+                            position: "center",
+                            icon: "success",
+                            title: "' . $_SESSION['success'] . ' ",
+                            showConfirmButton: true,
+                            timer: 1500
+                        });
+                    </script>';
+                    unset($_SESSION['success']);
+                }
+        
+        ?>

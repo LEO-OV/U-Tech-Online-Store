@@ -29,15 +29,19 @@
         if (session_status() === PHP_SESSION_NONE) {
             session_start(); // Solo inicia la sesión si no está activa
         }
+        $admin = false;
         $user = '';
         // Si existe la sesión 'id' y 'username', asigna el nombre de usuario
-        if (isset($_SESSION['id']) && isset($_SESSION['username'])){
+        if (isset($_SESSION['id']) && isset($_SESSION['username']) && isset($_SESSION['perm'])){
+            if($_SESSION['perm'] == 1){
+                $admin = true;
+            }
             $user = $_SESSION['username'];
             $user_display = strlen($user) > 15 ? substr($user, 0, 15) . '...' : $user;
         }
     ?>
     <!-- MENU -->
-    <nav class="navbar relative-top navbar-dark navbar-expand-lg mb-lg-5 px-lg-2">
+    <nav class="navbar relative-top navbar-dark navbar-expand-lg mb-lg-5 px-lg-2 py-0">
         <div class="container-fluid">
             
             <div class="d-flex align-items-center justify-content-start pe-lg-2">
@@ -59,7 +63,6 @@
                 <div class="offcanvas-body d-flex flex-column justify-content-between" >
                 <ul class="navbar-nav fs-5 justify-content-start ">
                     <!-- ENLACES SESIÓN -->
-                    
                         <?php 
                             // SI EXISTE LA SESIÓN
                             if ($user != ''){
@@ -69,7 +72,7 @@
                                     <ul class="dropdown-menu p-3" style="background-color: #845162; border: none;">
                                         <li class="text-white">' .  $user_display  . '</li>
                                         <li><hr class="dropdown-divider text-white"></li>
-                                        <li><a href="/U-Tech/src/"class="dropdowm-item link"><i class="bi bi-person-fill-gear fs-5"></i>&emsp;Account</a></li>
+                                        <li><a href="/U-Tech/src/pages/account-management.php"class="dropdowm-item link"><i class="bi bi-gear"></i>&emsp;Account</a></li>
                                         <li><a onclick="logout()" class="dropdowm-item link"><i class="bi bi-power fs-5"></i>&emsp;Log Out</a></li>
                                     </ul>';
                             } 
@@ -78,6 +81,12 @@
                                 echo '<li class="nav-item px-3"><a href="/U-Tech/src/pages/login.php" class="nav-link"><i class="bi bi-person-circle fs-1"></i></a></li>';
                             } ?>
                     </li>
+                    <!-- ADMIN -->
+                    <?php
+                        if($admin){
+                            echo '<li class="nav-item p-3 py-md-3"><a href="/U-Tech/src/admin/admin.php" class="nav-link link"><i class="bi bi-person-fill-gear"></i> ADMIN</a></li>';
+                        } 
+                    ?>
                     <!-- ENLACES A SECCIONES DE LA PÁGINA -->
                     <li class="nav-item dropdown p-3 py-md-3">
                         <a href="#" class="nav-link link dropdown-toggle" role="button" data-bs-toggle="dropdown">PRODUCTS</a>
@@ -89,10 +98,10 @@
                             <li><a href="" class="dropdown-item link"><i class="bi bi-headphones"></i>&emsp;Headphones</a></li>
                         </ul>
                     </li>    
-                        <!-- ENRUTAMIENTO -->
-                    <li class="nav-item p-3 py-md-3 "><a href="" class="nav-link">MENU 2</a></li>
-                    <li class="nav-item p-3 py-md-3 "><a href="" class="nav-link">MENU 3</a></li>
-                    <li class="nav-item p-3 py-md-3 "><a href="<?php echo '/U-Tech/src/pages/about-us.php'; ?>" class="nav-link">ABOUT US</a></li>
+                    <!-- CARRITO -->
+                    <li class="nav-item p-3 py-md-3 "><a href="" class="nav-link link">MENU 2</a></li> 
+                    <!-- ABOUT US -->
+                    <li class="nav-item p-3 py-md-3 "><a href="<?php echo '/U-Tech/src/pages/about-us.php'; ?>" class="nav-link link">ABOUT US</a></li>
                 </ul>
                     <!-- ICONOS DE REDES SOCIALES -->
                     <div class="d-lg-none text-center">

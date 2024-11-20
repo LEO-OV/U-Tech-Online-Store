@@ -73,4 +73,4 @@
 
     
     <!-- FIN DEL ABOUT -->
-    <?php include '../components/footer.php' ?>  <!--HEADER -->
+    <?php include '../components/footer.php' ?>  <!--FOOTER -->

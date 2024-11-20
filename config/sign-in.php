@@ -12,11 +12,11 @@
     if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         session_start();
 
-        $mail = test_input($_POST['mail']);
-        $pwd = $_POST['passwd'];
+        $mail = test_input($_POST['mail-in']);
+        $pwd = $_POST['passwd-in'];
 
         // Consulta preparada
-        $query = "SELECT ID_usuario, nombre, contrasena FROM usuarios WHERE correo = ?";
+        $query = "SELECT ID_usuario, nombre, contrasena, permisos FROM usuarios WHERE correo = ?";
         $stmt = $con->prepare($query);
         
         // Bind de parámetros
@@ -34,21 +34,24 @@
                 $_SESSION['success'] = 'Welcome back '.$res['nombre'].'!';
                 $_SESSION['id'] = $res['ID_usuario']; // Sesión para el ID
                 $_SESSION['username'] = $res['nombre']; // Sesión para el nombre
+                $_SESSION['perm'] = $res['permisos']; // Sesión para los permisos
                 $stmt->close();
                 $con->close();
-                header('location: ../index.php');
+                header('location: /U-Tech/index.php');
                 exit;
             } 
+        }else{
+            $_SESSION['error'] = 'The data entered is incorrect!';
+            $stmt->close();
+            $con->close();
+            header('location: /U-tech/src/pages/login.php');
+            exit;
         }
-        $_SESSION['error'] = 'The data entered is incorrect!';
-        $stmt->close();
-        $con->close();
-        header('location: /U-tech/src/pages/login.php');
-        exit;
+        
     } else{
         $_SESSION['error'] = 'POST request method required';
         $con->close();
         header('location: /U-tech/src/pages/login.php');
-        exit();
+        exit;
     }
    

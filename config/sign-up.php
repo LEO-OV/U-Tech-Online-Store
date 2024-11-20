@@ -77,16 +77,17 @@
         
         
         // Ejecuta el registro
-        $stmt->bind_param("ssssiii", $name, $mail, $hased_pwd,$bdate,$card,$add,$permisos);
+        $stmt->bind_param("sssssii", $name, $mail, $hased_pwd,$bdate,$card,$add,$permisos);
         
         if ($stmt->execute()) {
             // Registro exitoso
             $_SESSION['success'] = 'Welcome to U-Tech '.$name.'!';
             $_SESSION['id'] = $stmt->insert_id; // Sesión para el ID
             $_SESSION['username'] = $name; // Sesión para el nombre
+            $_SESSION['perm'] = $permisos; // Sesión para los permisos
             $stmt->close();
             $con->close();
-            header('location: ../index.php');
+            header('location: /U-Tech/index.php');
             exit;
         } else {
             //No se pudo realizar el registro

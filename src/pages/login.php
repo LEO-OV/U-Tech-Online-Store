@@ -78,7 +78,7 @@
                     <div class="row mb-2">
                         <label for="passwd-up" class="col-sm-2 col-form-label"><i class="bi bi-lock fs-3"></i></label>
                         <div class="col-sm-10">
-                            <input type="password" placeholder="Password [10]" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,k}"  id="passwd-up" name="passwd-up" class="form-control" required>
+                            <input type="password" placeholder="Password [10]" pattern=".{10,10}"  id="passwd-up" name="passwd-up" class="form-control" required>
                         </div>
                     </div>
                     <!-- tarjeta bancaria -->

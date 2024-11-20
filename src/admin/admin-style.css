@@ -4,6 +4,7 @@
     box-sizing: border-box;
 }
 body,html{
+    background-color: #212529;
     height: 100%;
     font-family: "Nunito", sans-serif;
 }
@@ -48,4 +49,12 @@ body,html{
 }
 h1, h2, h3, h4, h5, h6, p{
     font-family: "Nunito", sans-serif;
+}
+.link{
+    color: white !important;
+    opacity: 0.6;
+}
+.link:hover{
+    opacity: 1;
+    transform: scale(1.2);
 }
