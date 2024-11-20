@@ -5,25 +5,49 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>U Tech</title>
     <link rel="stylesheet" href="src/styles/styles-index.css">
-            
     <?php 
         require_once 'config/config.php';
         require 'src/components/header.php';  //HEADER 
-
+        
         if (isset($_SESSION['success'])){
-            echo '
-            <script>
-                Swal.fire({
-                    position: "top-end",
-                    icon: "success",
-                    title: "' . $_SESSION['success'] . ' ",
-                    showConfirmButton: false,
-                    timer: 2500
-                });
-            </script>';
+            if ($_SESSION['perm'] == 1){
+                echo '
+                <script>
+                    Swal.fire({
+                    title: "Welcome admin!",
+                    text: "'.$_SESSION['username'].'",
+                    imageUrl: "/U-Tech/public/img/admin.png",
+                    imageHeight: 200,
+                    imageAlt: "Boss image"
+                    });
+                </script>';
+            } else{
+                echo '
+                <script>
+                    Swal.fire({
+                        position: "top-end",
+                        icon: "success",
+                        title: "' . $_SESSION['success'] . ' ",
+                        showConfirmButton: false,
+                        timer: 2500
+                    });
+                </script>';
+            }
             unset($_SESSION['success']);
         }
-
+        if (isset($_SESSION['notadmin'])){
+            echo '
+                <script>
+                    Swal.fire({
+                    title: "Admin permissions needed to access this page.",
+                    text: "'.$_SESSION['notadmin'].'",
+                    imageUrl: "/U-Tech/public/img/notadmin.png",
+                    imageHeight: 200,
+                    imageAlt: "Crying image"
+                    });
+                </script>';
+            unset($_SESSION['success']);
+        }
     ?>  
 
         <!-- CARRUSEL -->
