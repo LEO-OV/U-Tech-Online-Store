@@ -1,38 +1,5 @@
 <?php
-    function test_input($data) {
-        $data = trim($data);
-        $data = stripslashes($data);
-        $data = htmlspecialchars(($data));
-        return $data;
-    }
-    function card_validation($num_card){
-        $num_card = preg_replace('/\D/', '', $num_card);
-
-        // Verificar que el número tenga solo dígitos
-        if (!ctype_digit($num_card)) {
-            return false; // El número contiene caracteres no válidos
-        }
-        $sum = 0;
-        $len = strlen($num_card);
-        $par = $len % 2 === 0; // Determina si la longitud es par
-
-        for ($i = 0; $i < $len; $i++) {
-            $digito = (int)$num_card[$i];
-
-            // Duplica cada segundo dígito desde la derecha
-            if (($i % 2 === 0 && $par) || ($i % 2 !== 0 && !$par)) {
-                $digito *= 2;
-                if ($digito > 9) {
-                    $digito -= 9; // Si el dígito es mayor a 9, resta 9
-                }
-            }
-            $sum += $digito;
-        }
-
-        // Es válido si la suma es divisible por 10
-        return $sum % 10 === 0;
-    }
-
+    require 'val-functions.php';
     require 'a-conn.php';
     
     if ($_SERVER['REQUEST_METHOD'] == 'POST') {
@@ -59,14 +26,12 @@
             $stmt->close();
             $con->close();
             header('location: /U-tech/src/admin/pages/add-user.php');
-            exit;
         }
         //Validamos la tarjeta de credito
         if (!card_validation($card)){
             $_SESSION['error'] = 'The credit card is invalid.';
             $con->close();
             header('location: /U-tech/src/admin/pages/add-user.php');
-            exit;
         } 
         //Encriptamos la contraseña
         $hased_pwd = password_hash($_POST['passwd-up'],PASSWORD_DEFAULT);
@@ -76,15 +41,14 @@
         $stmt = $con->prepare($registro);        
         
         // Ejecuta el registro
-        $stmt->bind_param("ssssiii", $name, $mail, $hased_pwd,$bdate,$card,$add,$perm);
+        $stmt->bind_param("sssssii", $name, $mail, $hased_pwd,$bdate,$card,$add,$perm);
         
         if ($stmt->execute()) {
             // Registro exitoso
-            $_SESSION['success'] = 'Usser '.$name.' added succesfully!';
+            $_SESSION['success'] = 'User '.$name.' added succesfully!';
             $stmt->close();
             $con->close();
             header('location: /U-tech/src/admin/pages/add-user.php');
-            exit;
         } else {
             //No se pudo realizar el registro
             $_SESSION['error'] = 'There was a problem in the registration';
@@ -94,7 +58,6 @@
         }
     } else{
         $_SESSION['error'] = 'POST request method required';
-        $con->close();
         header('location: /U-tech/src/admin/pages/add-user.php');  
-        exit();
-    }
+    } 
+    exit;

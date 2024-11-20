@@ -1,10 +1,8 @@
 <?php
+    session_start();
     if ($_SERVER['REQUEST_METHOD']=='POST'){
-        require 'a-conn.php';
-        session_start();
-        $_SESSION['test'] = 'Product added.';
-
         if (isset($_FILES['img']) && $_FILES['img']['error'] == UPLOAD_ERR_OK){
+            require 'a-conn.php';
             //Se recibe la imagen
             $img = $_FILES['img']['tmp_name'];
             $img_name = $_FILES['img']['name'];
@@ -38,7 +36,7 @@
                 
                 if ($stmt->execute()){
                     //Se agregó el producto
-                    $_SESSION['success'] = 'Product added.';
+                    $_SESSION['success'] = 'Product added succesfully.';
                 } else {
                     //Error al agregar el producto
                     $_SESSION['error'] = 'Error, the product was not added.';
@@ -47,23 +45,19 @@
                 $stmt->close();
                 $con->close();
                 header('location: /U-tech/src/admin/pages/add-prod.php'); 
-                exit;
             }else{
                 //Error al guardar la imagen
                 $_SESSION['error'] = 'A problem occurred while saving the image.';
-                $con->close();
                 header('location: /U-tech/src/admin/pages/add-prod.php'); 
-                exit;
             }
         } else{
             //Error al cargar la imagen
             $_SESSION['error'] = 'Image upload failed.';
             $con->close();
             header('location: /U-tech/src/admin/pages/add-prod.php'); 
-            exit;
         }
     } else{
-        $_SESSION['error'] = 'Invalid request method.';
+        $_SESSION['error'] = 'Invalid POST method required.';
         header('location: /U-tech/src/admin/pages/add-prod.php');
-        exit;
     }
+    exit;

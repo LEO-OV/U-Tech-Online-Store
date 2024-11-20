@@ -2,30 +2,6 @@
     require_once '../../../config/config.php';
     session_start();
     require BASE_PATH . 'src/admin/admin-header.php';  
-    
-    if (isset($_SESSION['error'])) {
-        echo '<script>
-                Swal.fire({
-                    icon: "error",
-                    title: "Oops...",
-                    text: "'. $_SESSION['error'] . '",
-                    });
-                </script>';
-        unset($_SESSION['error']); // Elimina el mensaje después de mostrarlo
-    } else if (isset($_SESSION['success'])){
-        echo '
-        <script>
-            Swal.fire({
-                position: "center",
-                icon: "success",
-                title: "' . $_SESSION['success'] . ' ",
-                showConfirmButton: true,
-                timer: 1500
-            });
-        </script>';
-        unset($_SESSION['success']);
-    }
-
     ?>
         <!-- CONTENIDO DEL INDEX -->
             <div class="container-md text-center my-5">
@@ -40,7 +16,7 @@
                     <!-- CONTRASEÑA -->
                     <div class="input-group mb-3">
                         <span class="input-group-text">Password [10]</span>
-                        <input type="password" name="passwd" class="form-control" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,k}" required>
+                        <input type="password" name="passwd" class="form-control" pattern=".{10,10}" required>
                     </div>
                     <!-- CORREO -->
                     <div class=" mb-3">
@@ -51,7 +27,7 @@
                     <!-- NACIMIENTO -->
                     <div class="input-group mb-3">
                         <span class="input-group-text">Birthdate</span>
-                        <input type="date" name="bdate" class="form-control" placeholder="Price" required>  
+                        <input type="date" name="bdate" class="form-control" required>  
                     </div>
                     <!-- TARJETA -->
                     <div class="input-group mb-3">
