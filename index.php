@@ -9,55 +9,59 @@
         require_once 'config/config.php';
         require 'src/components/header.php';  //HEADER 
         
-        if (isset($_SESSION['error'])) {
-            echo '<script>
-                    Swal.fire({
-                            icon: "error",
-                            title: "Oops...",
-                            text: "'. $_SESSION['error'] . '",
-                            });
-                    </script>';
-            unset($_SESSION['error']); 
-        }
-
-        if (isset($_SESSION['success'])){
-            if ($_SESSION['perm'] == 1){
-                echo '
-                <script>
-                    Swal.fire({
-                    title: "Welcome admin!",
-                    text: "'.$_SESSION['username'].'",
-                    imageUrl: "/U-Tech/public/img/admin.png",
-                    imageHeight: 200,
-                    imageAlt: "Boss image"
-                    });
-                </script>';
-            } else{
-                echo '
-                <script>
-                    Swal.fire({
-                        position: "top-end",
-                        icon: "success",
-                        title: "' . $_SESSION['success'] . ' ",
-                        showConfirmButton: false,
-                        timer: 2500
-                    });
-                </script>';
+        if (!empty($_SESSION)) {
+            foreach ($_SESSION as $key => $value) {
+                switch ($key) {
+                    case 'error':
+                        echo '<script>
+                                Swal.fire({
+                                    icon: "error",
+                                    title: "Oops...",
+                                    text: "' . $value . '"
+                                });
+                              </script>';
+                        unset($_SESSION['error']);
+                        break;
+        
+                    case 'success':
+                        if (isset($_SESSION['perm']) && $_SESSION['perm'] == 1) {
+                            echo '<script>
+                                    Swal.fire({
+                                        title: "Welcome admin!",
+                                        text: "' . $_SESSION['username'] . '",
+                                        imageUrl: "/U-Tech/public/img/admin.png",
+                                        imageHeight: 200,
+                                        imageAlt: "Boss image"
+                                    });
+                                  </script>';
+                        } else {
+                            echo '<script>
+                                    Swal.fire({
+                                        position: "top-end",
+                                        icon: "success",
+                                        title: "' . $value . '",
+                                        showConfirmButton: false,
+                                        timer: 2500
+                                    });
+                                  </script>';
+                        }
+                        unset($_SESSION['success']);
+                        break;
+        
+                    case 'notadmin':
+                        echo '<script>
+                                Swal.fire({
+                                    title: "Admin permissions needed to access this page.",
+                                    text: "' . $value . '",
+                                    imageUrl: "/U-Tech/public/img/notadmin.png",
+                                    imageHeight: 200,
+                                    imageAlt: "Crying image"
+                                });
+                              </script>';
+                        unset($_SESSION['notadmin']);
+                        break;
+                }
             }
-            unset($_SESSION['success']);
-        }
-        if (isset($_SESSION['notadmin'])){
-            echo '
-                <script>
-                    Swal.fire({
-                    title: "Admin permissions needed to access this page.",
-                    text: "'.$_SESSION['notadmin'].'",
-                    imageUrl: "/U-Tech/public/img/notadmin.png",
-                    imageHeight: 200,
-                    imageAlt: "Crying image"
-                    });
-                </script>';
-            unset($_SESSION['notadmin']);
         }
     ?>  
 

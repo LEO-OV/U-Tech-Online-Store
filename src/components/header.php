@@ -92,10 +92,10 @@
                         <a href="#" class="nav-link link dropdown-toggle" role="button" data-bs-toggle="dropdown">PRODUCTS</a>
                         <!-- MENU DESPLEGABLE -->
                         <ul class="dropdown-menu" style="background-color: #845162; border: none;">
-                            <li><a href="" class="dropdown-item link"><i class="bi bi-phone"></i>&emsp;Phones</a></li>
-                            <li><a href="" class="dropdown-item link"><i class="bi bi-tablet"></i>&emsp;Laptops</a></li>
-                            <li><a href="" class="dropdown-item link"><i class="bi bi-laptop"></i>&emsp;Tablets</a></li>
-                            <li><a href="" class="dropdown-item link"><i class="bi bi-headphones"></i>&emsp;Headphones</a></li>
+                            <li><a href="<?php echo'/U-Tech/src/pages/product.php?cat-id=1' ?>" class="dropdown-item link"><i class="bi bi-phone"></i>&emsp;Phones</a></li>
+                            <li><a href="<?php echo'/U-Tech/src/pages/product.php?cat-id=2' ?>" class="dropdown-item link"><i class="bi bi-tablet"></i>&emsp;Laptops</a></li>
+                            <li><a href="<?php echo'/U-Tech/src/pages/product.php?cat-id=3' ?>" class="dropdown-item link"><i class="bi bi-laptop"></i>&emsp;Tablets</a></li>
+                            <li><a href="<?php echo'/U-Tech/src/pages/product.php?cat-id=4' ?>" class="dropdown-item link"><i class="bi bi-headphones"></i>&emsp;Headphones</a></li>
                         </ul>
                     </li>    
                     <!-- CARRITO -->

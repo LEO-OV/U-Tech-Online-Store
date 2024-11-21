@@ -39,9 +39,15 @@
                 $con->close();
                 header('location: /U-Tech/index.php');
                 exit;
-            } 
-        }else{
-            $_SESSION['error'] = 'The data entered is incorrect!';
+            } else{
+                $_SESSION['error'] = 'The data entered is incorrect!';
+                $stmt->close();
+                $con->close();
+                header('location: /U-tech/src/pages/login.php');
+                exit;
+            }
+        } else{
+            $_SESSION['error'] = 'Theres was a problem accessing the database.';
             $stmt->close();
             $con->close();
             header('location: /U-tech/src/pages/login.php');
