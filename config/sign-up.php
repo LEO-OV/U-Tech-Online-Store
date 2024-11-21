@@ -1,46 +1,12 @@
 <?php
-    function test_input($data) {
-        $data = trim($data);
-        $data = stripslashes($data);
-        $data = htmlspecialchars(($data));
-        return $data;
-    }
-    function card_validation($num_card){
-        $num_card = preg_replace('/\D/', '', $num_card);
-
-        // Verificar que el número tenga solo dígitos
-        if (!ctype_digit($num_card)) {
-            return false; // El número contiene caracteres no válidos
-        }
-        $sum = 0;
-        $len = strlen($num_card);
-        $par = $len % 2 === 0; // Determina si la longitud es par
-
-        for ($i = 0; $i < $len; $i++) {
-            $digito = (int)$num_card[$i];
-
-            // Duplica cada segundo dígito desde la derecha
-            if (($i % 2 === 0 && $par) || ($i % 2 !== 0 && !$par)) {
-                $digito *= 2;
-                if ($digito > 9) {
-                    $digito -= 9; // Si el dígito es mayor a 9, resta 9
-                }
-            }
-            $sum += $digito;
-        }
-
-        // Es válido si la suma es divisible por 10
-        return $sum % 10 === 0;
-    }
-
+    require 'val-functions.php';
     require 'conn.php';
-    
+    session_start();
     if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-        session_start();
         //Se extraen los datos
         $mail = test_input($_POST['mail-up']);
         $name = test_input($_POST['name']);
-        $pwd = $_POST['passwd-up'];
+        $pwd = test_input($_POST['passwd-up']);
         $bdate = $_POST['bdate'];
         $card = test_input($_POST['c-card']);
         $add = test_input($_POST['address']);    

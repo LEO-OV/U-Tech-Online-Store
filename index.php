@@ -9,6 +9,17 @@
         require_once 'config/config.php';
         require 'src/components/header.php';  //HEADER 
         
+        if (isset($_SESSION['error'])) {
+            echo '<script>
+                    Swal.fire({
+                            icon: "error",
+                            title: "Oops...",
+                            text: "'. $_SESSION['error'] . '",
+                            });
+                    </script>';
+            unset($_SESSION['error']); 
+        }
+
         if (isset($_SESSION['success'])){
             if ($_SESSION['perm'] == 1){
                 echo '
@@ -46,7 +57,7 @@
                     imageAlt: "Crying image"
                     });
                 </script>';
-            unset($_SESSION['success']);
+            unset($_SESSION['notadmin']);
         }
     ?>  
 

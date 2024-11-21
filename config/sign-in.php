@@ -13,7 +13,7 @@
         session_start();
 
         $mail = test_input($_POST['mail-in']);
-        $pwd = $_POST['passwd-in'];
+        $pwd = test_input($_POST['passwd-in']);
 
         // Consulta preparada
         $query = "SELECT ID_usuario, nombre, contrasena, permisos FROM usuarios WHERE correo = ?";

@@ -57,7 +57,7 @@
             header('location: /U-tech/src/admin/pages/add-prod.php'); 
         }
     } else{
-        $_SESSION['error'] = 'Invalid POST method required.';
+        $_SESSION['error'] = 'POST request method required.';
         header('location: /U-tech/src/admin/pages/add-prod.php');
     }
     exit;
