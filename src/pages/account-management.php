@@ -3,6 +3,7 @@
             session_start(); // Solo inicia la sesión si no está activa
         }
     require '../../config/conn.php';
+
     if (isset($_SESSION['id'])){
         $id = $_SESSION['id'];
         $query = "SELECT * from usuarios WHERE ID_usuario = $id";
@@ -14,13 +15,14 @@
             $con->close();
             header('location: /U-Tech/config/out.php');
         }
+
     } else{
         $_SESSION['error'] = 'You need to be logged in to access this page';
         $con->close();
         header('location: /U-Tech/src/pages/login.php');
     } 
     
-    $con->close();
+    $con->close();    
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -44,6 +46,30 @@
     <?php 
         require_once '../../config/config.php';
         require BASE_PATH . 'src/components/header.php'; //HEADER
+
+        // ALERTAS
+        if (isset($_SESSION['error'])) {
+            echo '<script>
+                    Swal.fire({
+                            icon: "error",
+                            title: "Oops...",
+                            text: "'. $_SESSION['error'] . '",
+                            });
+                    </script>';
+            unset($_SESSION['error']); 
+        } else if (isset($_SESSION['success'])){
+            echo '
+                <script>
+                    Swal.fire({
+                        position: "center",
+                        icon: "success",
+                        title: "' . $_SESSION['success'] . ' ",
+                        showConfirmButton: true,
+                        timer: 1500
+                    });
+                </script>';
+                unset($_SESSION['success']);
+            }
     ?>
     <!-- INICIO CONTENIDO -->
     <section class="container content my-5 mt-lg-0  mx-5 p-sm-5 p-3">
@@ -52,9 +78,9 @@
                 <h3 class="text-center color1">Manage Account</h3>
             </div>
             <!-- FORMULARIO PARA CAMBIAR DATOS -->
-            <form class="row g-3 text-white" action="" method="post">
+            <form class="row g-3 text-white" action="<?php echo'/U-Tech/config/updt-user.php' ?>" method="post">
                 <div class="col-md-2">
-                    <label for="id" class="form-label"><i class="bi bi-moon-fill"></i>&emsp;ID [readonly]</label>
+                    <label for="id" class="form-label"><i class="bi bi-moon-fill"></i>&emsp;ID</label>
                     <input type="text" name="id" class="form-control-plaintext color1" id="id" value="<?php echo $userD['ID_usuario']; ?>" readonly>
                 </div>
                 <!-- NOMBRE -->
@@ -75,7 +101,7 @@
                 <!-- POSTAL -->
                 <div class="col-md-4">
                     <label for="address" class="form-label"><i class="bi bi-house"></i>&emsp;Mailing Address</label>
-                    <input type="text" name="add" class="form-control" id="address" value="<?php echo $userD['postal'] ?>" required>
+                    <input type="text" name="address" class="form-control" id="address" value="<?php echo $userD['postal'] ?>" required>
                 </div>
                 <!-- CORREO -->
                 <div class="col-md-6">

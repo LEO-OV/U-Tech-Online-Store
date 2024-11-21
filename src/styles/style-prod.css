@@ -1,0 +1,8 @@
+.add-button{
+    background-color: #522c5d;
+    text-decoration: none;
+    color:  #FFE3D8 !important;
+}
+.add-button:hover{
+    transform: scale(2);
+}
