@@ -1,23 +1,31 @@
 <?php
-    session_start();
+     if (session_status() === PHP_SESSION_NONE) {
+        session_start();
+    }
+
     if (!isset($_GET['cat-id']) || $_GET['cat-id'] < 1 || $_GET['cat-id'] > 4) {
-        $_SESSION['error'] = 'Invalid category ID.';
+        $_SESSION['error'] = 'URL not found.';
         header('location: /U-Tech/index.php');
         exit();
     } else{
         require '../../config/conn.php';
-
+        $cat_id=$_GET['cat-id'];
         // Consulta de productos de acuerdo a la categoría
         $stmt = $con->prepare("SELECT * FROM productos WHERE ID_categoria = ?");
-        $stmt->bind_param('i',$_GET['cat-id']);
+        $stmt->bind_param('i',$cat_id);
         $stmt->execute();
         $res = $stmt->get_result();
 
+        // Obtenemos el nombre de la categoría
+        $query = "SELECT nombre FROM categoria WHERE ID_categoria = $cat_id";
+        $title = mysqli_query($con,$query)->fetch_assoc();
+
         if ($res->num_rows == 0){
-            $_SESSION['error'] =  'No products were found.';
+            $_SESSION['error'] = 'No products were found.';
             $stmt->close();
             $con->close();
             header('location: /U-Tech/index.php');
+            exit();
         }
     }
 
@@ -60,7 +68,7 @@
     <!-- INICIO CONTENIDO -->
     <section class="container-fluid content my-5 text-center pb-lg-5">
     <div class="container">
-        <h2 class="mb-4 color3">PHONES</h2>
+        <h2 class="mb-4 color3"><?php echo $title['nombre']; ?></h2>
     </div>
 
     <div class="container cat">
@@ -79,32 +87,31 @@
                     echo '<div class="row g-4 justify-content-start">';
                 } 
                 echo '<div class="col-lg-4 col-md-6 col-sm-12">
-                        <div class="card p-3 shadow rounded" style="background-color: #f5f3ef; border: none;">
+                        <div class="card rounded shadow" style="border: none;">
                             <!-- Imagen del producto -->
-                            <img src="' . $img['foto'] . '" class="img-fluid mb-3" alt="Product Img">
+                            <img src="' . $img['foto'] . '" class="img-fluid mb-1 rounded-top" alt="Product Img">
 
                             <!-- Cuerpo de la tarjeta -->
-                            <div class=" rounded-5">
+                            <div class="card-body pb-4">
                                 <!-- Título del producto -->
-                                <p class="card-title text-white rounded px-1 py-1 mb-3 fs-5" style="background-color: #522c5d;">
+                                <p class="card-title color5 fs-5">
                                     ' . $producto['nombre'] . '
-                                </p>
+                                </p>    
+
+                                <!-- Información adicional -->
+                                <ul class="list-unstyled">
+                                    <li class="color3"><strong>$' . $producto['precio'] . '</strong></li>
+                                    <li class="text-secondary"><strong>' . $producto['fabricante'] . '</strong></li>
+                                </ul>
 
                                 <!-- Descripción del producto -->
-                                <p class="card-text color5 fs-6">
+                                <p class="card-text text-muted fs-6">
                                     ' . $producto['descripcion'] . '
                                 </p>
 
-                                <!-- Información adicional -->
-                                <ul class="list-group list-group-flush" style="background-color: #f5f3ef;">
-                                    <li class="list-group-item border-0 px-0 py-1"><strong>Price:</strong> $' . $producto['precio'] . '</li>
-                                    <li class="list-group-item border-0 px-0 py-1"><strong>Manufacturer:</strong> ' . $producto['fabricante']. '</li>
-                                    <li class="list-group-item border-0 px-0 py-1"><strong>Origin:</strong>' . $producto['origen'] . '</li>
-                                </ul>
-
                                 <!-- Botón agregar al carrito -->
-                                <a class="add-button btn px-4 py-2 mt-4 rounded w-100" href="/U-Tech/config/add-cart.php?prod-id="' . $producto['ID_producto'] . '" style="background-color: #522c5d;">
-                                    <i class="bi bi-cart-plus"></i>&emsp;ADD TO CART
+                                <a class="add-button px-3 py-2 rounded w-100" href="/U-Tech/config/add-cart.php?prod-id=' . $producto['ID_producto'] . '&cat-id=' . $producto['ID_categoria'] . '">
+                                    <i class="bi bi-cart-plus"></i> Add to Cart
                                 </a>
                             </div>
                         </div>

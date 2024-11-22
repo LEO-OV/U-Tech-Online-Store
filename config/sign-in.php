@@ -35,6 +35,15 @@
                 $_SESSION['id'] = $res['ID_usuario']; // Sesión para el ID
                 $_SESSION['username'] = $res['nombre']; // Sesión para el nombre
                 $_SESSION['perm'] = $res['permisos']; // Sesión para los permisos
+                
+                //Validamos si hay productos agregados al carrito
+                $val =  $con->prepare("SELECT ID_carrito FROM carrito WHERE ID_usuario = ?");
+                $val->bind_param('i', $res['ID_usuario']);
+                $val->execute();
+                
+                $_SESSION['cart'] = ($val->get_result()->fetch_assoc())?true:null;
+
+                $val->close();
                 $stmt->close();
                 $con->close();
                 header('location: /U-Tech/index.php');
@@ -47,7 +56,7 @@
                 exit;
             }
         } else{
-            $_SESSION['error'] = 'Theres was a problem accessing the database.';
+            $_SESSION['error'] = 'User not found.';
             $stmt->close();
             $con->close();
             header('location: /U-tech/src/pages/login.php');

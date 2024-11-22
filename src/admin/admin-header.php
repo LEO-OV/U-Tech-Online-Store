@@ -32,15 +32,21 @@
         <!-- NAVBAR -->
         <section class="navbar navbar-expand-md bg-dark" data-bs-theme="dark">
             <div class="container-fluid">
-                <a href="<?php echo '/U-Tech/src/admin/admin.php'; ?>" class="navbar-brand"><i class="bi bi-moon-fill"></i>&emsp;ADMIN</a>
+                <a href="<?php echo '/U-Tech/src/admin/admin.php'; ?>" class="navbar-brand"><i class="bi bi-moon-fill"></i></a>
                 <button class="navbar-toggler" style="border: none;" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                   </button>
                   <div class="collapse navbar-collapse" id="navbarNavDropdown">
                     <ul class="navbar-nav">
-                        <!-- VOLVER A LA TIENDA -->
-                        <li class="nav-item px-3">
-                            <a class="nav-link " aria-current="page" href="<?php echo '/U-Tech/index.php'; ?>"><i class="bi bi-shop-window"></i>&emsp;U-Tech Store</a>
+                        <!-- FUNCIONALIDADES -->
+                        <li class="nav-item dropdown px-3">
+                            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                <i class="bi bi-person-gear"></i>&emsp;ADMIN
+                            </a>
+                            <ul class="dropdown-menu">
+                                <li><a class="dropdown-item" href="<?php echo '/U-Tech/index.php'; ?>"><i class="bi bi-shop-window"></i>&emsp;U-Tech Store</a></li>
+                                <li><a class="dropdown-item" href="<?php echo '/U-Tech/config/out.php'; ?>"><i class="bi bi-power"></i>&emsp;Sign out</a></li>
+                            </ul>
                         </li>
                         <!-- PRODUCTOS -->
                         <li class="nav-item dropdown px-3">

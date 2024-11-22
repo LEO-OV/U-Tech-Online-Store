@@ -47,8 +47,8 @@
                                     // Mostramos la fila
                                     echo '<tr>';
                                     echo '<td>'.$row['ID_producto'].'</td>';
-                                    echo '<td>'.$row['nombre'].'</td>';
                                     echo '<td>'.$cat['nombre'].'</td>'; // Mostramos el nombre de la categoría
+                                    echo '<td>'.$row['nombre'].'</td>';
                                     echo '<td>'.$row['descripcion'].'</td>';
                                     echo '<td><img src="'.$img_src['foto'].'" alt="Image" style="width: 50px; height: auto;"></td>'; // Mostramos la imagen
                                     echo '<td>'.$row['cantidad'].'</td>';

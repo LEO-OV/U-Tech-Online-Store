@@ -9,20 +9,13 @@
         require_once 'config/config.php';
         require 'src/components/header.php';  //HEADER 
         
+        if (session_status() === PHP_SESSION_NONE) {
+            session_start(); // Solo inicia la sesión si no está activa
+        }
+
         if (!empty($_SESSION)) {
             foreach ($_SESSION as $key => $value) {
                 switch ($key) {
-                    case 'error':
-                        echo '<script>
-                                Swal.fire({
-                                    icon: "error",
-                                    title: "Oops...",
-                                    text: "' . $value . '"
-                                });
-                              </script>';
-                        unset($_SESSION['error']);
-                        break;
-        
                     case 'success':
                         if (isset($_SESSION['perm']) && $_SESSION['perm'] == 1) {
                             echo '<script>
@@ -60,6 +53,17 @@
                               </script>';
                         unset($_SESSION['notadmin']);
                         break;
+        
+                        case 'error':
+                            echo '<script>
+                                    Swal.fire({
+                                        icon: "error",
+                                        title: "Oops...",
+                                        text: "' . $value . '"
+                                    });
+                                  </script>';
+                            unset($_SESSION['error']);
+                            break;
                 }
             }
         }

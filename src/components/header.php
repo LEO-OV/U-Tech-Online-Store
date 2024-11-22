@@ -8,7 +8,7 @@
 <script>
     function logout(){
         Swal.fire({
-            title: "Do you wanto to logout?",
+            title: "Do you wanto to sign out?",
             showDenyButton: true,
             denyButtonText: `Cancel`,
             confirmButtonText: 'Continue'
@@ -66,14 +66,19 @@
                         <?php 
                             // SI EXISTE LA SESIÓN
                             if ($user != ''){
+                                // ADMIN
                                 echo ' 
                                     <li class="nav-item dropdown px-3 ">
                                     <a href="#" class="nav-link link" role="button" data-bs-toggle="dropdown" > <i class="bi bi-person-circle fs-1"></i></a>
                                     <ul class="dropdown-menu p-3" style="background-color: #845162; border: none;">
                                         <li class="text-white">' .  $user_display  . '</li>
-                                        <li><hr class="dropdown-divider text-white"></li>
-                                        <li><a href="/U-Tech/src/pages/account-management.php"class="dropdowm-item link"><i class="bi bi-gear"></i>&emsp;Account</a></li>
-                                        <li><a onclick="logout()" class="dropdowm-item link"><i class="bi bi-power fs-5"></i>&emsp;Log Out</a></li>
+                                        <li><hr class="dropdown-divider text-white"></li>';
+                                        if($admin){
+                                            echo '<li"><a href="/U-Tech/src/admin/admin.php" class="dropdowm-item link"><i class="bi bi-person-fill-gear"></i>&emsp;Admin</a></li>';
+                                        } else{
+                                            echo '<li><a href="/U-Tech/src/pages/account-management.php"class="dropdowm-item link"><i class="bi bi-gear"></i>&emsp;Account</a></li>';
+                                        }
+                                        echo '<li><a onclick="logout()" class="dropdowm-item link"><i class="bi bi-power fs-5"></i>&emsp;Sign Out</a></li>
                                     </ul>';
                             } 
                             // SI NO HAY SESIÓN
@@ -81,12 +86,6 @@
                                 echo '<li class="nav-item px-3"><a href="/U-Tech/src/pages/login.php" class="nav-link"><i class="bi bi-person-circle fs-1"></i></a></li>';
                             } ?>
                     </li>
-                    <!-- ADMIN -->
-                    <?php
-                        if($admin){
-                            echo '<li class="nav-item p-3 py-md-3"><a href="/U-Tech/src/admin/admin.php" class="nav-link link"><i class="bi bi-person-fill-gear"></i> ADMIN</a></li>';
-                        } 
-                    ?>
                     <!-- ENLACES A SECCIONES DE LA PÁGINA -->
                     <li class="nav-item dropdown p-3 py-md-3">
                         <a href="#" class="nav-link link dropdown-toggle" role="button" data-bs-toggle="dropdown">PRODUCTS</a>
@@ -115,7 +114,7 @@
             <!-- ICONO CARRITO  -->
             <ul class="nav justify-content-end align-items-center">  
                 <li class="nav-item">
-                    <a href="" class="nav-link link"><i class="bi bi-cart fs-1"></i></a> 
+                    <a href="<?php echo'/U-Tech/src/pages/cart.php' ?>" class="nav-link link"><i class="bi bi-cart fs-1"></i></a> 
                 </li> 
             </ul>
         </div>

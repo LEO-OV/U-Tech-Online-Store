@@ -36,7 +36,7 @@
                 
                 if ($stmt->execute()){
                     //Se agregó el producto
-                    $_SESSION['success'] = 'Product added succesfully.';
+                    $_SESSION['success'] = 'Product added successfully.';
                 } else {
                     //Error al agregar el producto
                     $_SESSION['error'] = 'Error, the product was not added.';
