@@ -97,8 +97,6 @@
                             <li><a href="<?php echo'/U-Tech/src/pages/product.php?cat-id=4' ?>" class="dropdown-item link"><i class="bi bi-headphones"></i>&emsp;Headphones</a></li>
                         </ul>
                     </li>    
-                    <!-- CARRITO -->
-                    <li class="nav-item p-3 py-md-3 "><a href="" class="nav-link link">MENU 2</a></li> 
                     <!-- ABOUT US -->
                     <li class="nav-item p-3 py-md-3 "><a href="<?php echo '/U-Tech/src/pages/about-us.php'; ?>" class="nav-link link">ABOUT US</a></li>
                 </ul>
@@ -112,11 +110,30 @@
             </section>
 
             <!-- ICONO CARRITO  -->
-            <ul class="nav justify-content-end align-items-center">  
-                <li class="nav-item">
-                    <a href="<?php echo'/U-Tech/src/pages/cart.php' ?>" class="nav-link link"><i class="bi bi-cart fs-1"></i></a> 
-                </li> 
-            </ul>
+            <div class="nav justify-content-end align-items-center">  
+                    <a href="<?php echo'/U-Tech/src/pages/cart.php' ?>" class="nav-link link"><i class="bi bi-cart fs-1"></i>
+                    <?php 
+                        if (isset($_SESSION['cart']) && isset($_SESSION['id']) ){
+                                require_once $_SERVER['DOCUMENT_ROOT'].'/U-Tech/config/conn.php';
+
+                                $id = $_SESSION['id'];
+                                $getn = $con->prepare("SELECT ID_carrito, cantidad FROM carrito WHERE ID_usuario = ?");
+                                $getn->bind_param('i',$id);
+                                $getn->execute();
+                                $n_prod = $getn->get_result();
+
+                                $num_prod = 0;
+                                while ($res = $n_prod->fetch_assoc()){
+                                    $num_prod += $res['cantidad'];
+                                }
+                                
+                                echo '<div class="cart-items rounded-circle">' . $num_prod . '</div>';
+                                $getn->close();
+                        }
+                    ?>
+                    
+                    </a> 
+            </div>
         </div>
     </nav>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>

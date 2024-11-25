@@ -27,8 +27,8 @@
 
     <!-- ABOUT -->
     <section class="content about px-lg-0 px-5 my-5">
-        <div class="container-fluid mb-4 py-5 text-center rounded-5 shadow"  style="background-color: #522c5d;">
-            <h2 class="text-white">ABOUT US</h2>
+        <div class="container-fluid mb-4 py-3 text-center rounded-5 shadow"  style="background-color: #29104A;">
+            <h2 class="text-white fw-light">ABOUT US</h2>
         </div>
         <!-- ABOUT DESCRIPCIÓN -->
         <div class="row align-items-stretch color5 py-5 px-2 rounded-5 shadow">
@@ -44,27 +44,27 @@
             </div>
         </div>
         <!-- EQUIPO -->
-        <div class="container-fluid my-5 p-5 px-lg-5 text-center rounded-5 shadow" style="background-color: #FFE3D8;  color: #845162;">
+        <div class="container-fluid my-5 p-3 px-lg-5 text-center rounded-5 shadow" style="background-color: #FFE3D8;  color: #845162;">
             <div class="row pt-5">
-                <h2 class="color3">OUR TEAM</h2>
+                <h2 class="color3 fw-light">OUR TEAM</h2>
             </div>
             <div class="row">
                 <!-- INGENIERO -->
                 <div class="col-lg-4 rounded-5 px-4">
-                    <img src="../../public/img/ing.png" alt="" class="img-fluid rounded-circle" width="300" height="300">
-                    <h4 class="py-3">ING. BOB</h4>
+                    <img src="../../public/img/ing.png" alt="" class="img-fluid rounded-circle img-hover" width="300" height="300">
+                    <h4 class="py-3 fw-light">ING. BOB</h4>
                     <p class="text-justify">U Tech's Principal Engineer and Developer is an expert in advanced technology and interconnected product design. His focus on reliability and efficiency drives the creation of innovative devices that transform the user experience, ensuring that each product meets the highest standards of quality and functionality.</p>
                 </div>
                 <!-- CEO -->
                 <div class="col-lg-4 rounded-5 px-4">
-                    <img src="../../public/img/ceo.png" alt="" class="img-fluid rounded-circle" width="300" height="300">
-                    <h4 class="py-3">CEO</h4>
+                    <img src="../../public/img/ceo.png" alt="" class="img-fluid rounded-circle img-hover" width="300" height="300">
+                    <h4 class="py-3 fw-light">CEO</h4>
                     <p class="text-justify">U Tech's CEO is a visionary technology leader focused on innovation and excellence. Under her leadership, the company creates an intuitive and secure digital ecosystem that connects people to the future through advanced, user-centric products.</p>
                 </div>
                 <!-- IA -->
                 <div class="col-lg-4 rounded-5 px-4">
-                    <img src="../../public/img/ia.png" alt="" class="img-fluid rounded-circle" width="300" height="300">
-                    <h4 class="py-3">AI</h4>
+                    <img src="../../public/img/ia.png" alt="" class="img-fluid rounded-circle img-hover" width="300" height="300">
+                    <h4 class="py-3 fw-light">AI</h4>
                     <p class="text-justify">U Tech's artificial intelligence is an advanced assistant designed to solve problems quickly and efficiently. With real-time learning and analytics capabilities, this AI delivers customized solutions, optimizes device performance and enhances the user experience, ensuring that every interaction is seamless, intuitive and secure.</p>
                 </div>
             </div>

@@ -6,10 +6,10 @@
                 <div class="col-md-3 col-lg-3 co-xl-3  mx-auto pt-5">
                     <h5 class="fs-5 mb-4 color1">OUR PRODUCTS</h5>
                     <hr class="mb-4">
-                    <p class="link-footer link fs-5"><a class="color1" href="#" ><i class="bi bi-phone"></i>&emsp;Phones</a></p>
-                    <p class="link-footer link fs-5"><a class="color1" href="#" ><i class="bi bi-tablet"></i>&emsp;Laptops</a></p>
-                    <p class="link-footer link fs-5"><a class="color1" href="#" ><i class="bi bi-laptop"></i>&emsp;Tablets</a></p>
-                    <p class="link-footer link fs-5"><a class="color1" href="#" ><i class="bi bi-headphones"></i>&emsp;Headphones</a></p>
+                    <p class="link-footer link fs-5"><a class="color1" href="<?php echo '/U-Tech/src/pages/product.php?cat-id=1' ?>" ><i class="bi bi-phone"></i>&emsp;Phones</a></p>
+                    <p class="link-footer link fs-5"><a class="color1" href="<?php echo '/U-Tech/src/pages/product.php?cat-id=1' ?>" ><i class="bi bi-tablet"></i>&emsp;Laptops</a></p>
+                    <p class="link-footer link fs-5"><a class="color1" href="<?php echo '/U-Tech/src/pages/product.php?cat-id=1' ?>" ><i class="bi bi-laptop"></i>&emsp;Tablets</a></p>
+                    <p class="link-footer link fs-5"><a class="color1" href="<?php echo '/U-Tech/src/pages/product.php?cat-id=1' ?>" ><i class="bi bi-headphones"></i>&emsp;Headphones</a></p>
                 </div>
                 <div class="col-md-3 col-lg-3 co-xl-3 mx-auto pt-5">
                     <h5 class="fs-5 mb-4 color1">SUPPORT</h5>
@@ -34,6 +34,10 @@
         </div>
     </footer>
     <script src="<?php echo '/U-Tech/src/scripts/btns.js'; ?>"></script>
-
+    <?php 
+        if (isset($con)) {
+            $con->close();
+        } 
+        ?>
 </body>
 </html>

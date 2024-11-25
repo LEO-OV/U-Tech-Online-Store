@@ -22,7 +22,6 @@
         header('location: /U-Tech/src/pages/login.php');
     } 
     
-    $con->close();    
 ?>
 <!DOCTYPE html>
 <html lang="en">

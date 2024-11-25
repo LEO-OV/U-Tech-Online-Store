@@ -64,6 +64,19 @@
                                   </script>';
                             unset($_SESSION['error']);
                             break;
+
+                        case 'info':
+                            echo '<script>
+                                Swal.fire({
+                                    title: "Info",
+                                    text: "' . $_SESSION['info'] . '",
+                                    imageUrl: "/U-Tech/public/img/smart.png",
+                                    imageHeight: 200,
+                                    imageAlt: "Crying image"
+                                    });
+                            </script>';
+                            unset($_SESSION['info']);
+                            break;
                 }
             }
         }
@@ -103,7 +116,7 @@
         <!-- CARACTERISTICAS DESTACADAS -->
         <section class="container-fluid content-index my-5 px-lg-0 px-4 text-center color2">
             <div class="row my-5 p-5">
-                <h2 class="fw-bold color3">WHY U TECH?</h2>
+                <h2 class="color3">WHY U TECH?</h2>
             </div>
             <!-- CARACTERISTICA 1 -->
             <div class="row i-card rounded-5 mb-5 mx-auto">
@@ -112,7 +125,7 @@
                     <p>Our AI technology adapts to your preferences and usage patterns, optimizing performance and anticipating your needs to make every interaction more efficient and personalized.</p>
                 </div>
                 <div class="col-md-5 ver-align">
-                    <img src="public/img/car1.png" alt="AI that learns from you." class="img-fluid">
+                    <img src="public/img/car1.png" alt="AI that learns from you." class="img-fluid img-hover">
                 </div>
             </div>
 
@@ -124,7 +137,7 @@
                         <p>Protecting your data is our priority. We implement advanced security systems, including facial recognition and AI-encrypted fingerprints for accuracy and speed.</p>
                     </div>
                     <div class="row">
-                        <img src="public/img/car4.png" alt="Next generation security." class="img-fluid">
+                        <img src="public/img/car4.png" alt="Next generation security." class="img-fluid img-hover">
                     </div>
                 </div>
                 <div class="col-md i-card rounded-5 ms-md-4 my-5 px-5 py-4 mx-auto">
@@ -133,7 +146,7 @@
                         <p>Experience audiovisual excellence with our high-resolution displays and artificial intelligence-optimized surround sound systems for an unparalleled entertainment experience.</p>
                     </div>
                     <div class="row">
-                        <img src="public/img/car5.png" alt="Immersive experience." class="img-fluid">
+                        <img src="public/img/car5.png" alt="Immersive experience." class="img-fluid img-hover">
                     </div>
                 </div>
             </div>
@@ -141,7 +154,7 @@
             <!-- CARACTERISTICA 4 -->
             <div class="row i-card rounded-5 mb-5 mx-auto">
                 <div class="col-md-4 ver-align">
-                    <img src="public/img/car2.png" alt="Innovation at the highest level." class="img-fluid">
+                    <img src="public/img/car2.png" alt="Innovation at the highest level." class="img-fluid img-hover">
                 </div>
                 <div class="col-md-8 ver-align px-5 py-4">
                     <h4 class="color3">Innovation at the Highest Level</h4>
@@ -152,7 +165,7 @@
             <!-- CARACTERISTICA 5 -->
             <div class="row i-card rounded-5 mb-5 mx-auto"> 
                 <div class="col-md-5 ver-align">
-                    <img src="public/img/car3.png" alt="Unbeatable performance." class="img-fluid">
+                    <img src="public/img/car3.png" alt="Unbeatable performance." class="img-fluid img-hover">
                 </div>
                 <div class="col-md-7 ver-align px-5 py-4 text-lg-end text-center">
                     <h4>Unbeatable Performance</h4>
