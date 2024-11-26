@@ -70,7 +70,7 @@
                         </li>
                         <!-- HISTORIAL DE COMPRAS -->
                         <li class="nav-item px-3">
-                            <a class="nav-link " aria-current="page" href="<?php echo '/U-Tech/src/admin/pages/history.php'; ?>"><i class="bi bi-clock-history"></i>&emsp;Purchase history</a>
+                            <a class="nav-link " aria-current="page" href="<?php echo '/U-Tech/src/admin/pages/history.php'; ?>"><i class="bi bi-clock-history"></i>&emsp;Sales History</a>
                         </li>
                     </ul>
             </div>

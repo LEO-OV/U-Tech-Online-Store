@@ -73,12 +73,15 @@
                                     <ul class="dropdown-menu p-3" style="background-color: #845162; border: none;">
                                         <li class="text-white">' .  $user_display  . '</li>
                                         <li><hr class="dropdown-divider text-white"></li>';
+                                        // MENU ADMIN
                                         if($admin){
                                             echo '<li"><a href="/U-Tech/src/admin/admin.php" class="dropdowm-item link"><i class="bi bi-person-fill-gear"></i>&emsp;Admin</a></li>';
                                         } else{
                                             echo '<li><a href="/U-Tech/src/pages/account-management.php"class="dropdowm-item link"><i class="bi bi-gear"></i>&emsp;Account</a></li>';
                                         }
-                                        echo '<li><a onclick="logout()" class="dropdowm-item link"><i class="bi bi-power fs-5"></i>&emsp;Sign Out</a></li>
+                                        echo '<li><a href="/U-Tech/src/pages/purchase-history.php" class="dropdowm-item link"><i class="bi bi-clock-history"></i>&emsp;Purchase History</a></li>'.
+                                            '<li><a onclick="logout()" class="dropdowm-item link"><i class="bi bi-power fs-5"></i>&emsp;Sign Out</a></li>
+                                    
                                     </ul>';
                             } 
                             // SI NO HAY SESIÓN
