@@ -156,7 +156,7 @@
         </div>
     <?php 
          if(!isset($_SESSION['cart'])){
-            echo '<h2 class="text-center color2"> Your cart is empty&emsp;<i class="bi bi-emoji-frown"></i></h2>';
+            echo '<h2 class="text-center color2"> Your shopping cart is empty&emsp;<i class="bi bi-emoji-frown"></i></h2>';
         } else {
             echo '<div class="row">
                 <div class="col-sm-8 pe-sm-5">';
@@ -200,8 +200,9 @@
                                                 '<form action="/U-Tech/config/edit-cart.php" method="post">'.
                                                 '<input type="hidden" name="id" value="' . $id . '">'.
                                                 '<input type="hidden" name="quantity" value="' . $cant . '">'.
-                                                '<div class="row">'.
-                                                    '<div class="col"><button class="act-btn color3" name="del"><i class="bi bi-trash"></i></button></div>'. //Trash
+                                                '<div class="row">'.   
+                                                // ACCIONES DE EDIT CART          
+                                                    '<div class="col"><button class="act-btn color3" name="trash"><i class="bi bi-trash"></i></button></div>'. //Trash
                                                     '<div class="col"><button class="act-btn color3" name="subtraction"><i class="bi bi-dash"></i></button></div>'. //Subtraction
                                                     '<div class="col">' . $cant . '</div>'.
                                                     '<div class="col"><button class="act-btn color3" name="addition"><i class="bi bi-plus"></i></button></div>'. //Addition

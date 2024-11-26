@@ -45,12 +45,15 @@
             
             require 'conn.php';
 
+            // AUMENTAR ITEM
             if (isset($_POST['addition'])){
                 $quantity += 1;
             } 
+            // RESTAR ITEM
             else{
                 $quantity -= 1;
                 if ($quantity < 1){
+                    // SI LA RESTA ES < A 0 SE ELIMINA EL ITEM
                     if (eliminar ($id,$user_id)){
                         if (empy_cart($user_id)){
                             unset($_SESSION['cart']);
@@ -68,31 +71,36 @@
                     }
                 }
             }            
-
+            // SE HACE EL UPDATE DE LA CANTIDAD EN EL CARRITO
             $stmt = $con->prepare("UPDATE carrito SET cantidad = ? WHERE ID_producto = ? AND ID_usuario = ?");
             $stmt->bind_param('iii',$quantity,$id, $user_id);
             
             if(!$stmt->execute()){
                 $_SESSION['error'] = 'There is a problem with the database.';
-                header('location: /U-Tech/src/pages/cart.php');
-                exit;
-            } else{
-                header('location: /U-Tech/src/pages/cart.php');
-                exit;
             }
+            $stmt->close();
+            $con->close();
+            header('location: /U-Tech/src/pages/cart.php');
+            exit;
             
-   
-        }    
-         else if (isset($_POST['del'])){
-            $_SESSION['error'] = 'deleted';
-            header('location: /U-Tech/src/pages/cart.php');
-            exit;
-        } else{
-            $_SESSION['success'] = 'There was an error.';
-            header('location: /U-Tech/src/pages/cart.php');
-            exit;
-        }
-    } else{
-        $_SESSION['error'] = 'POST method required.';
-        header('location: /U-Tech/src/pages/cart.php');
-    }
+            // SI SE DESEA ELIMINAR EL PRODUCTO
+        } else if (isset($_POST['trash'])){
+            if (eliminar ($id,$user_id)){
+                if (empy_cart($user_id)){
+                    unset($_SESSION['cart']);
+                    $_SESSION['info'] = 'You have emptied your shopping cart!';
+                    header('location: /U-Tech/index.php');
+                    exit;
+                } else{
+                    $_SESSION['success'] = 'Product deleted successfully.';
+                    header('location: /U-Tech/src/pages/cart.php');
+                    exit;
+                }   
+            } else{
+                $_SESSION['error'] = 'The item was not deleted.';
+            }
+        } 
+    } 
+    $_SESSION['error'] = 'There was an error.';
+    header('location: /U-Tech/src/pages/cart.php');
+    exit;
