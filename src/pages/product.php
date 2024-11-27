@@ -84,7 +84,7 @@
     <!-- INICIO CONTENIDO -->
     <section class="container-fluid content my-5 text-center pb-lg-5">
     <div class="container">
-        <h2 class="mb-4 color3 text-uppercase"><?php echo $title['nombre']; ?>s</h2>
+        <h2 class="mb-4 color3 text-uppercase"><?php echo $title['nombre']; ?></h2>
     </div>
 
     <div class="container cat">

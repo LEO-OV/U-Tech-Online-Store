@@ -39,7 +39,7 @@
     <!-- INICIO CONTENIDO -->
     <section class="content">
         <div class="container px-lg-5 mb-5">
-            <div class="row rounded-5 mb-4" style="background-color: #845162; padding: 20px;">
+            <div class="row rounded-5 mb-4 mt-lg-0 mt-5" style="background-color: #845162; padding: 20px;">
                 <h2 class="color1 text-center w-100">My Purchases</h2>
             </div>
             <?php
